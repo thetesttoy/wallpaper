@@ -56,7 +56,7 @@
         >
           <div class="image-wrapper">
             <img
-              :src="item.thumbnail || item.url || 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"600\" height=\"400\"><rect width=\"100%\" height=\"100%\" fill=\"%23efefef\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%23888\" font-size=\"20\">No Image</text></svg>'"
+              :src="item.thumbnail || item.url || defaultImage"
               :alt="item.name"
               @load="onImageLoad"
               @error="onImageError"
@@ -240,6 +240,8 @@ import { useAuthStore } from '@/stores/auth'
 
 const router = useRouter()
 const authStore = useAuthStore()
+
+const defaultImage = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="100%" height="100%" fill="%23efefef"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23888" font-size="20">No Image</text></svg>'
 
 // 响应式数据
 const images = ref<any[]>([])
