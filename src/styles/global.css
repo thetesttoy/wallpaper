@@ -1,0 +1,138 @@
+/* 全局样式 - 雪之下二次元风格主题 */
+:root {
+  /* 雪之下风格配色：冰蓝、樱粉、雪白、深邃紫 */
+  --anime-primary: #58ccff; /* 冰蓝色 (Snow/Ice) */
+  --anime-primary-light: #a0e9ff; /* 浅冰蓝 */
+  --anime-primary-dark: #0099cc; /* 深冰蓝 */
+  
+  --anime-secondary: #ff9ec5; /* 樱花粉 (Sakura) - 保留一点温暖 */
+  --anime-secondary-light: #ffb7d5;
+  
+  --anime-accent: #c77dff; /* 神秘紫 (Mystery) */
+  
+  --anime-bg: #0f172a; /* 深蓝夜空背景 */
+  --anime-bg-depth: #1e293b; /* 次级背景 */
+  
+  --anime-card-bg: rgba(30, 41, 59, 0.6); /* 深色磨砂玻璃 */
+  --anime-card-bg-hover: rgba(51, 65, 85, 0.7);
+  
+  --anime-text: #f8fafc; /* 雪白色文字 */
+  --anime-text-secondary: #cbd5e1; /* 灰蓝色文字 */
+  
+  /* 渐变 */
+  --anime-gradient: linear-gradient(135deg, var(--anime-primary), var(--anime-accent));
+  --anime-gradient-reverse: linear-gradient(135deg, var(--anime-accent), var(--anime-primary));
+  --anime-gradient-snow: linear-gradient(135deg, #e0f2fe, #bae6fd);
+  --anime-gradient-sakura: linear-gradient(135deg, #ff9ec5, #fbcfe8);
+  
+  /* 光效 */
+  --anime-glow: 0 0 20px rgba(88, 204, 255, 0.5); /* 蓝光 */
+  --anime-glow-secondary: 0 0 25px rgba(199, 125, 255, 0.5); /* 紫光 */
+  --anime-border-glow: 1px solid rgba(88, 204, 255, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Exo 2', 'Orbitron', 'Segoe UI', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; /* 增加一点科技感字体 */
+  background: var(--anime-bg);
+  /* 动态背景光点 */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(88, 204, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(199, 125, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(255, 158, 197, 0.1) 0%, transparent 50%);
+  color: var(--anime-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--anime-gradient);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--anime-gradient-reverse);
+}
+
+/* 二次元风格通用类 */
+.anime-gradient-text {
+  background: var(--anime-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.anime-glow {
+  box-shadow: var(--anime-glow);
+  transition: box-shadow 0.3s ease;
+}
+
+.anime-glow:hover {
+  box-shadow: var(--anime-glow-secondary);
+}
+
+.anime-card {
+  background: var(--anime-card-bg);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(88, 204, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.anime-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--anime-primary);
+  background: var(--anime-card-bg-hover);
+  box-shadow: var(--anime-glow);
+}
+
+/* 动画效果 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}
