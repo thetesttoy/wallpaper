@@ -277,7 +277,7 @@ const placeholderImg = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/20
 const authStore = useAuthStore()
 const router = useRouter()
 const isAuthenticated = computed(() => authStore.isAuthenticated)
-const userInfo = computed(() => authStore.user)
+const userInfo = computed(() => authStore.userInfo)
 
 const showLogin = ref(false)
 const showRegister = ref(false)
@@ -302,7 +302,7 @@ const validatePass = (rule: any, value: any, callback: any) => {
   } else {
     if (registerForm.confirmPassword !== '') {
       if (!registerFormRef.value) return
-      registerFormRef.value.validateField('confirmPassword', () => null)
+      registerFormRef.value.validateField('confirmPassword', () => {})
     }
     callback()
   }
